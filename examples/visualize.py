@@ -8,6 +8,30 @@ import numpy as np
 from transformers import BertTokenizer, BertModel, DNATokenizer
 from process_pretrain_data import get_kmer_sentence
 
+def get_kmer_sentence(original_string, kmer=1):
+    if kmer == -1:
+        return original_string
+
+    sentence = ""
+    original_string = original_string.replace("\n", "")
+    for i in range(len(original_string)-kmer):
+        sentence += original_string[i:i+kmer] + " "
+    
+    sentence += original_string[-kmer:]
+
+    return sentence
+
+def get_kmer_sequence(original_string, kmer=1):
+    if kmer == -1:
+        return original_string
+
+    sequence = []
+    original_string = original_string.replace("\n", "")
+    for i in range(len(original_string)-kmer):
+        sequence.append(original_string[i:i+kmer])
+    
+    sequence.append(original_string[-kmer:])
+    return sequence
 
 def format_attention(attention):
     squeezed = []
