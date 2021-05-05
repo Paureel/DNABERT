@@ -6,7 +6,7 @@ import os
 import numpy as np
 
 from transformers import BertTokenizer, BertModel, DNATokenizer
-from process_pretrain_data import get_kmer_sentence
+#from process_pretrain_data import get_kmer_sentence
 
 def get_kmer_sentence(original_string, kmer=1):
     if kmer == -1:
